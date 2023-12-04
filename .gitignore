@@ -1,0 +1,14 @@
+.venv
+.vscode
+/.vscode
+/.venv
+.venv/*
+.vscode/*
+venv
+venv/*
+
+# Sqlite
+*.sqlite3
+
+# resume_files
+/resume_files

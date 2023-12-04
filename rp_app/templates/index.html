@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>Resume Parser</h2>
+<br>
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-xl-12">
+                <div class="bg-white shadow-sm rounded p-3">
+                    <div class="table-responsive w-100">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6><i class='bx bxs-data'></i></i>&nbsp;<strong>{{ title }}</strong></h6>
+                            <div class="col-0">
+                                <a href="{% url 'upload' %}" class="btn btn-outline-success btn-sm">Upload Resume</a>
+                            </div>
+                        </div>
+                        <table class="table table-borderless table-hover table align-middle mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">File Name</th>
+                                    <th scope="col">Parsed Data</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for resume_data in resumes %}
+                                <tr>
+                                    <td>{{ resume_data.resume.url }}</td>
+                                    <td><strong>Name:</strong> {{ resume_data.name}} <br>
+                                        <strong>Email</strong>{{resume_data.email}} <br>
+                                        <strong>Mobile:</strong> {{resume_data.mobile}} <br>
+                                        <strong>Skills:</strong> {{resume_data.skills}} <br>
+                                        <strong>Education:</strong> {{resume_data.education }}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete' resume_data.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
